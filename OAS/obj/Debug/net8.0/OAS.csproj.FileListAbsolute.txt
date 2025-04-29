@@ -1,0 +1,12 @@
+C:\Users\xxlaz\Online-Auction-system\OAS\bin\Debug\net8.0\OAS.deps.json
+C:\Users\xxlaz\Online-Auction-system\OAS\bin\Debug\net8.0\OAS.dll
+C:\Users\xxlaz\Online-Auction-system\OAS\bin\Debug\net8.0\OAS.pdb
+C:\Users\xxlaz\Online-Auction-system\OAS\obj\Debug\net8.0\OAS.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\xxlaz\Online-Auction-system\OAS\obj\Debug\net8.0\OAS.AssemblyInfoInputs.cache
+C:\Users\xxlaz\Online-Auction-system\OAS\obj\Debug\net8.0\OAS.AssemblyInfo.cs
+C:\Users\xxlaz\Online-Auction-system\OAS\obj\Debug\net8.0\OAS.csproj.CoreCompileInputs.cache
+C:\Users\xxlaz\Online-Auction-system\OAS\obj\Debug\net8.0\OAS.sourcelink.json
+C:\Users\xxlaz\Online-Auction-system\OAS\obj\Debug\net8.0\OAS.dll
+C:\Users\xxlaz\Online-Auction-system\OAS\obj\Debug\net8.0\refint\OAS.dll
+C:\Users\xxlaz\Online-Auction-system\OAS\obj\Debug\net8.0\OAS.pdb
+C:\Users\xxlaz\Online-Auction-system\OAS\obj\Debug\net8.0\ref\OAS.dll

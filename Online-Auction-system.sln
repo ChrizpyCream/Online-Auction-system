@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OAS", "OAS\OAS.csproj", "{DC6254BA-759E-4303-BE12-B0E115C640DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OAS.Tests", "OAS.Tests\OAS.Tests.csproj", "{6CF6DE9E-F610-4305-AE14-AB95A4E3C702}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OAS.Main", "OAS.Main\OAS.Main.csproj", "{78B86144-EB07-46D3-913D-7C2EDA19040C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC6254BA-759E-4303-BE12-B0E115C640DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC6254BA-759E-4303-BE12-B0E115C640DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC6254BA-759E-4303-BE12-B0E115C640DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC6254BA-759E-4303-BE12-B0E115C640DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CF6DE9E-F610-4305-AE14-AB95A4E3C702}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CF6DE9E-F610-4305-AE14-AB95A4E3C702}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CF6DE9E-F610-4305-AE14-AB95A4E3C702}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CF6DE9E-F610-4305-AE14-AB95A4E3C702}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78B86144-EB07-46D3-913D-7C2EDA19040C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78B86144-EB07-46D3-913D-7C2EDA19040C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78B86144-EB07-46D3-913D-7C2EDA19040C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78B86144-EB07-46D3-913D-7C2EDA19040C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
