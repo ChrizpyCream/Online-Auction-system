@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 
 namespace OAS
 {
@@ -6,6 +7,7 @@ namespace OAS
         public int UserId { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
+        public List<AuctionItem> WonItems { get; set; } // 🛠️ Made set; public
         public decimal Balance { get; set; }
 
         private static int _idCounter = 1;
@@ -16,6 +18,7 @@ namespace OAS
             Username = username;
             Password = password;
             Balance = 0.0m; // Start with zero balance
+            WonItems = new List<AuctionItem>(); // ✅ Initialize WonItems here!
         }
 
         public bool Authenticate(string username, string password)

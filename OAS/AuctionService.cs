@@ -76,12 +76,33 @@ namespace OAS
             return auctionItems;
         }
 
-        // ✅✅✅ --- ADD THIS NEW METHOD ---
         public AuctionItem GetLastAddedItem()
         {
             if (auctionItems.Count > 0)
                 return auctionItems[auctionItems.Count - 1];
             return null;
+        }
+
+        // ✅✅✅ --- IMPROVEMENT: List with Countdown Timers ---
+        public void ListAuctionItemsWithTimer()
+        {
+            Console.WriteLine("\n=== Current Auction Items ===");
+
+            foreach (var item in auctionItems.Where(i => !i.IsSold))
+            {
+                Console.WriteLine(item);
+
+                if (item.EndTime.HasValue)
+                {
+                    TimeSpan remaining = item.EndTime.Value - DateTime.Now;
+                    if (remaining.TotalSeconds > 0)
+                        Console.WriteLine($"⏳ Time Left: {remaining.Minutes:D2}:{remaining.Seconds:D2}");
+                    else
+                        Console.WriteLine("❌ Auction Ended (processing winner...)");
+                }
+
+                Console.WriteLine("-------------------------");
+            }
         }
     }
 }

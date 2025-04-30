@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using OAS;
 
 namespace OAS
@@ -13,43 +14,46 @@ namespace OAS
             AuctionService auctionService = new AuctionService();
             NotificationService notificationService = new NotificationService();
             PaymentService paymentService = new PaymentService();
-            TimerService timerService = new TimerService(auctionService, notificationService); // << Added TimerService
+            TimerService timerService = new TimerService(auctionService, notificationService);
 
-            // Sample admin
             Admin admin = new Admin("admin", "admin123");
 
-            // Sample users
             List<User> users = new List<User>
             {
                 new User("user1", "password1"),
                 new User("user2", "password2")
             };
 
-            // Admin adds some sample auction items
-            auctionService.AddAuctionItem("Vintage Watch", "Classic 1960s wristwatch", 100);
+            // Admin adds sample auction items
+            auctionService.AddAuctionItem("Vintage Watch", "Classic 1960s wristwatch⌚", 100);
             AuctionItem watch = auctionService.GetLastAddedItem();
-            timerService.StartAuctionTimer(watch, 30); // Auction ends in 30 seconds
+            watch.EndTime = DateTime.Now.AddSeconds(180);
+            timerService.StartAuctionTimer(watch, 180);
 
-            auctionService.AddAuctionItem("Gaming Laptop", "High-end specs", 1200);
+            auctionService.AddAuctionItem("Gaming Laptop", "High-end specs💻", 1200);
             AuctionItem laptop = auctionService.GetLastAddedItem();
-            timerService.StartAuctionTimer(laptop, 30); // Auction ends in 30 seconds
+            laptop.EndTime = DateTime.Now.AddSeconds(180);
+            timerService.StartAuctionTimer(laptop, 180);
 
             bool running = true;
             while (running)
             {
                 Console.WriteLine("\nSelect an option:");
-                Console.WriteLine("1. View Auction Items");
+                Console.WriteLine("1. View Auction Items 👀");
                 Console.WriteLine("2. Place a Bid");
-                Console.WriteLine("3. Admin Panel");
-                Console.WriteLine("4. Exit");
+                Console.WriteLine("3. Admin Panel 🎟️");
+                Console.WriteLine("4. Exit ❌");
 
                 Console.Write("\nChoice: ");
                 string choice = Console.ReadLine();
 
+                Console.Clear(); // 👈 Clear AFTER user input, no lag
+
                 switch (choice)
                 {
                     case "1":
-                        auctionService.ListAuctionItems();
+                        Console.WriteLine("=== Current Auction Items ===");
+                        auctionService.ListAuctionItemsWithTimer();
                         break;
 
                     case "2":
@@ -63,7 +67,8 @@ namespace OAS
                             break;
                         }
 
-                        auctionService.ListAuctionItems();
+                        Console.WriteLine("\n=== Current Auction Items ===");
+                        auctionService.ListAuctionItemsWithTimer();
                         Console.Write("\nEnter Item ID to bid on: ");
                         if (int.TryParse(Console.ReadLine(), out int itemId))
                         {
@@ -110,7 +115,8 @@ namespace OAS
                             {
                                 auctionService.AddAuctionItem(title, description, price);
                                 AuctionItem newItem = auctionService.GetLastAddedItem();
-                                timerService.StartAuctionTimer(newItem, 30); // New items also get 30-second auctions
+                                newItem.EndTime = DateTime.Now.AddSeconds(180);
+                                timerService.StartAuctionTimer(newItem, 180);
                                 Console.WriteLine("Auction item added successfully!");
                             }
                             else
@@ -127,6 +133,20 @@ namespace OAS
                     case "4":
                         running = false;
                         Console.WriteLine("Exiting system. Goodbye!");
+
+                        // ✅ After exiting, show all users' Won Items
+                        Console.WriteLine("\n=== Auction Results ===");
+                        foreach (var user in users)
+                        {
+                            if (user.WonItems.Count > 0)
+                            {
+                                Console.WriteLine($"\n{user.Username} won:");
+                                foreach (var wonItem in user.WonItems)
+                                {
+                                    Console.WriteLine($"- {wonItem.Title} for {wonItem.CurrentHighestBid:C}");
+                                }
+                            }
+                        }
                         break;
 
                     default:

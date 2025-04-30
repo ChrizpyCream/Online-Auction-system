@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace OAS
@@ -20,19 +18,28 @@ namespace OAS
         {
             Task.Run(async () =>
             {
-                Console.WriteLine($"Auction for '{item.Title}' will end in {durationSeconds} seconds...");
-                await Task.Delay(durationSeconds * 1000);
+                Console.WriteLine($"⏳ Auction for '{item.Title}' will end in {durationSeconds} seconds...");
+                await Task.Delay(durationSeconds * 1000); // Silent wait
 
                 if (!item.IsSold)
                 {
                     if (item.HighestBidder != null)
                     {
                         item.MarkAsSold();
-                        _notificationService.NotifyUser(item.HighestBidder, $"Congratulations! You won '{item.Title}' for {item.CurrentHighestBid:C}.");
+                        Console.WriteLine($"🏁 Auction for '{item.Title}' is over! Winner: {item.HighestBidder.Username} with a bid of {item.CurrentHighestBid:C}.");
+
+                        _notificationService.NotifyUser(item.HighestBidder, $"🎉 Congratulations! You won '{item.Title}' for {item.CurrentHighestBid:C}.");
+
+                        // ✅ Safely add the item to the user's WonItems list
+                        if (item.HighestBidder.WonItems == null)
+                        {
+                            item.HighestBidder.WonItems = new List<AuctionItem>();
+                        }
+                        item.HighestBidder.WonItems.Add(item);
                     }
                     else
                     {
-                        Console.WriteLine($"Auction for '{item.Title}' ended with no bids.");
+                        Console.WriteLine($"🚫 Auction for '{item.Title}' ended with no bids.");
                     }
                 }
             });

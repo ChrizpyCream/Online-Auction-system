@@ -11,6 +11,8 @@ namespace OAS
         public decimal CurrentHighestBid { get; private set; }
         public User HighestBidder { get; private set; }
         public bool IsSold { get; private set; }
+        public DateTime? EndTime { get; set; } // Add this to AuctionItem class
+
 
         private static int _idCounter = 1;
 
